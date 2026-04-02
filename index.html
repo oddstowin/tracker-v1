@@ -1,13 +1,142 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OddsMaster: Professional Betting Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="max-w-4xl">
+            <!-- Header -->
+            <header class="header">
+                <div class="icon-container">
+                    <i data-lucide="calculator" class="header-icon"></i>
+                </div>
+                <h1>OddsMaster</h1>
+                <p>Professional betting odds converter and payout calculator</p>
+            </header>
+
+            <div class="main-grid">
+                <!-- Main Calculator Section -->
+                <div class="calculator-column">
+                    <section class="card">
+                        <div class="card-header">
+                            <i data-lucide="arrow-right-left" class="icon-indigo"></i>
+                            <h2>Odds Converter</h2>
+                        </div>
+
+                        <div class="converter-body">
+                            <!-- Format Selector -->
+                            <div class="format-tabs" id="formatTabs">
+                                <button class="tab active" data-format="decimal">Decimal</button>
+                                <button class="tab" data-format="fractional">Fractional</button>
+                                <button class="tab" data-format="american">American</button>
+                                <button class="tab" data-format="implied">Implied Probability</button>
+                            </div>
+
+                            <!-- Input Field -->
+                            <div class="input-group">
+                                <label id="inputLabel">Input Decimal Odds</label>
+                                <div class="relative">
+                                    <input type="text" id="oddsInput" value="2.00" placeholder="e.g. 2.00">
+                                    <div class="input-icon">
+                                        <i data-lucide="refresh-cw" class="spin-slow"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Results Grid -->
+                            <div class="results-grid" id="resultsGrid">
+                                <!-- JS will populate this -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Payout Section -->
+                    <section class="card">
+                        <div class="card-header">
+                            <i data-lucide="dollar-sign" class="icon-emerald"></i>
+                            <h2>Payout Calculator</h2>
+                        </div>
+
+                        <div class="payout-body">
+                            <div class="payout-inputs">
+                                <div class="input-group">
+                                    <label>Stake Amount</label>
+                                    <div class="relative">
+                                        <span class="currency-symbol">$</span>
+                                        <input type="number" id="stakeInput" value="100" class="pl-10">
+                                    </div>
+                                </div>
+                                
+                                <div class="info-box">
+                                    <i data-lucide="info"></i>
+                                    <p>Calculated using current decimal odds of <strong id="currentDecimalDisplay">2.00</strong></p>
+                                </div>
+                            </div>
+
+                            <div class="payout-results">
+                                <div class="result-box highlight">
+                                    <span class="label">Total Payout</span>
+                                    <span class="value" id="totalPayoutDisplay">$200.00</span>
+                                </div>
+                                <div class="result-box">
+                                    <span class="label">Net Profit</span>
+                                    <span class="value" id="netProfitDisplay">$100.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <section class="guide-card">
+                        <h3>
+                            <i data-lucide="trending-up"></i>
+                            Quick Guide
+                        </h3>
+                        <ul class="guide-list">
+                            <li>
+                                <i data-lucide="chevron-right"></i>
+                                <span><strong>Decimal:</strong> Total return for every $1 staked.</span>
+                            </li>
+                            <li>
+                                <i data-lucide="chevron-right"></i>
+                                <span><strong>Fractional:</strong> Profit relative to stake (e.g. 2/1 means $2 profit for $1 stake).</span>
+                            </li>
+                            <li>
+                                <i data-lucide="chevron-right"></i>
+                                <span><strong>American:</strong> Positive (+) is profit for $100 stake; Negative (-) is stake needed for $100 profit.</span>
+                            </li>
+                            <li>
+                                <i data-lucide="chevron-right"></i>
+                                <span><strong>Implied:</strong> The percentage chance of winning reflected by the odds.</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <div class="footer-card">
+                        <p class="quote">"The house always wins, but with OddsMaster, you'll know exactly how much they're winning."</p>
+                        <div class="divider"></div>
+                        <p class="copyright">&copy; 2026 OddsMaster Calculator. For informational purposes only.</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <script src="/src/script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
 </html>
 
