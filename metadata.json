@@ -1,0 +1,5 @@
+{
+  "name": "OddsMaster: Professional Betting Calculator",
+  "description": "A comprehensive odds converter and payout calculator supporting Decimal, Fractional, American, and Implied Probability formats.",
+  "requestFramePermissions": []
+}
